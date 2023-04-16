@@ -33,7 +33,6 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Poetry - Install
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
       - name: Poetry - black check
         run: poetry run black . --check
@@ -57,7 +56,6 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Poetry - Install
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
       - name: Poetry - pytest
         run: poetry run pytest
@@ -82,7 +80,6 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Poetry - Install
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
       - name: Poetry - coverage report
         run: poetry run coverage run -m pytest && poetry run coverage xml
@@ -128,7 +125,6 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Poetry - Install
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
       - name: Poetry - Examples
         run: poetry run examples
