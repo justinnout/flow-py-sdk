@@ -1,5 +1,6 @@
 from abc import ABCMeta
 
+from typing import List
 from flow_py_sdk.cadence import Kind
 import flow_py_sdk.cadence.constants as c
 from flow_py_sdk.cadence.decode import decode, add_cadence_kind_decoder
@@ -152,8 +153,8 @@ class CompositeKind(Kind, metaclass=ABCMeta):
     def __init__(
         self,
         type_id: str,
-        initializers: list[list[ParameterKind]],
-        fields: list[FieldKind],
+        initializers: List[List[ParameterKind]],
+        fields: List[FieldKind],
     ) -> None:
         super().__init__()
         self.type_id = type_id
@@ -227,7 +228,7 @@ class ContractInterfaceKind(CompositeKind):
 
 class FunctionKind(Kind):
     def __init__(
-        self, type_id: str, parameters: list[ParameterKind], return_: Kind
+        self, type_id: str, parameters: List[ParameterKind], return_: Kind
     ) -> None:
         super().__init__()
         self.type_id = type_id
@@ -290,7 +291,7 @@ class ReferenceKind(Kind):
 
 
 class RestrictedKind(Kind):
-    def __init__(self, type_id: str, type_: Kind, restrictions: list[Kind]) -> None:
+    def __init__(self, type_id: str, type_: Kind, restrictions: List[Kind]) -> None:
         super().__init__()
         self.type_id = type_id
         self.type = type_
@@ -348,7 +349,7 @@ class CapabilityKind(Kind):
 
 
 class EnumKind(Kind):
-    def __init__(self, type_id: str, type_: Kind, fields: list[FieldKind]) -> None:
+    def __init__(self, type_id: str, type_: Kind, fields: List[FieldKind]) -> None:
         super().__init__()
         self.type_id = type_id
         self.fields = fields

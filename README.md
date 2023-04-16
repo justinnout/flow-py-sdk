@@ -11,7 +11,7 @@ Note: This SDK is also fully compatible with the Flow Emulator and can be used f
 
 ## Installing
 
-To start using the SDK, install Python 3.9 or higher and install package:
+To start using the SDK, install Python 3.7 or higher and install package:
 
 ```sh
 pip install flow-py-sdk

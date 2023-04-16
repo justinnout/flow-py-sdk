@@ -12,7 +12,7 @@ class Kind(ABC, object):
         super().__init__()
 
     def encode(self) -> dict:
-        return {c.kindKey: self.kind_str()} | self.encode_kind()
+        return {**{c.kindKey: self.kind_str()}, **self.encode_kind()}
 
     def as_kind(self, t: Type[TValue]) -> Optional[TValue]:
         if isinstance(self, t):

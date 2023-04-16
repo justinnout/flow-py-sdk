@@ -2,8 +2,13 @@ from __future__ import annotations
 
 from flow_py_sdk.cadence.value import Value
 import flow_py_sdk.cadence.constants as c
-
 from flow_py_sdk.exceptions import NotAddressError
+
+
+def remove_prefix(text, prefix):
+    if text.startswith(prefix):
+        return text[len(prefix):]
+    return text
 
 
 class Address(Value):
@@ -19,7 +24,7 @@ class Address(Value):
 
     @classmethod
     def from_hex(cls, value: str) -> "Address":
-        return Address(bytes.fromhex(value.removeprefix(Address.address_prefix)))
+        return Address(bytes.fromhex(remove_prefix(value, Address.address_prefix)))
 
     def hex(self) -> str:
         return self.bytes.hex()

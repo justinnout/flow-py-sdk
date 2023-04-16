@@ -8,6 +8,7 @@ from flow_py_sdk.exceptions import NotCadenceValueError
 from flow_py_sdk.frlp import rlp_encode_uint64
 from flow_py_sdk.proto.flow import entities
 from flow_py_sdk.signer import Signer
+from typing import List
 
 log = logging.getLogger(__name__)
 
@@ -76,14 +77,14 @@ class Tx(object):
         self.code: str = code
         self.reference_block_id: bytes = reference_block_id
         self.payer: Address = payer
-        self.arguments: list[Value] = []
+        self.arguments: List[Value] = []
         self.gas_limit: int = 100
-        self.authorizers: list[Address] = []
+        self.authorizers: List[Address] = []
         self.proposal_key: ProposalKey = proposal_key
-        self.payload_signatures: list[TxSignature] = []
-        self.envelope_signatures: list[TxSignature] = []
-        self.payload_signers: list[_TxSigner] = []
-        self.envelope_signers: list[_TxSigner] = []
+        self.payload_signatures: List[TxSignature] = []
+        self.envelope_signatures: List[TxSignature] = []
+        self.payload_signers: List[_TxSigner] = []
+        self.envelope_signers: List[_TxSigner] = []
 
     def with_gas_limit(self, gas_limit: int) -> "Tx":
         self.gas_limit = gas_limit
@@ -132,7 +133,7 @@ class Tx(object):
             ]
         )
 
-    def _signer_list(self) -> list[Address]:
+    def _signer_list(self) -> List[Address]:
         signers = []
         seen = {}
 
@@ -204,7 +205,7 @@ class Tx(object):
         self.arguments.extend(args)
         return self
 
-    def _missing_fields_for_signing(self) -> list[str]:
+    def _missing_fields_for_signing(self) -> List[str]:
         mandatory_fields = {
             "code": self.code,
             "payer": self.payer,

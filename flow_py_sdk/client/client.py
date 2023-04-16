@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 from types import TracebackType
-from typing import Optional, Type, Annotated, List, Union
+from typing import Optional, Type, List, Union
 
 import time
 from grpclib.client import Channel
@@ -14,7 +14,7 @@ from flow_py_sdk import cadence
 from flow_py_sdk.cadence import Value, cadence_object_hook, encode_arguments
 from flow_py_sdk.client import entities
 from flow_py_sdk.proto.flow.access import (
-    AccessAPIStub,
+    AccessApiStub,
     PingResponse,
 )
 from flow_py_sdk.script import Script
@@ -23,7 +23,7 @@ from flow_py_sdk.tx import Tx, TransactionStatus
 log = logging.getLogger(__name__)
 
 
-class AccessAPI(AccessAPIStub):
+class AccessAPI(AccessApiStub):
     def __init__(
         self,
         channel: "Channel",
@@ -349,7 +349,7 @@ class AccessAPI(AccessAPIStub):
 
     async def get_events_for_height_range(
         self, *, type: str = "", start_height: int = 0, end_height: int = 0
-    ) -> list[entities.EventsResponseResult]:
+    ) -> List[entities.EventsResponseResult]:
         """
         Query on blocks in specific height.
         The script is executed on an execution node and the return value is encoded using the JSON-Cadence data interchange format.
@@ -376,7 +376,7 @@ class AccessAPI(AccessAPIStub):
 
     async def get_events_for_block_i_ds(
         self, *, type: str = "", block_ids: List[bytes] = []
-    ) -> list[entities.EventsResponseResult]:
+    ) -> List[entities.EventsResponseResult]:
         """
         Query on blocks with specific IDs.
         The script is executed on an execution node and the return value is encoded using the JSON-Cadence data interchange format.
@@ -515,7 +515,7 @@ class AccessAPI(AccessAPIStub):
         return entities.TransactionResultResponse.from_proto(response, id=id)
 
     async def execute_transaction(
-        self, tx: Tx, *, wait_for_seal=True, timeout: Annotated[float, "seconds"] = 30.0
+        self, tx: Tx, *, wait_for_seal=True, timeout=30.0
     ) -> entities.TransactionResultResponse:
         """
         Submit a transaction to the network and wait to return its response.

@@ -12,7 +12,7 @@ class Value(ABC, object):
         super().__init__()
 
     def encode(self) -> dict:
-        return {c.typeKey: self.type_str()} | self.encode_value()
+        return {**{c.typeKey: self.type_str()}, **self.encode_value()}
 
     def as_type(self, t: Type[TValue]) -> Optional[TValue]:
         if isinstance(self, t):

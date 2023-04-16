@@ -1,5 +1,5 @@
 import json
-from typing import Any, Optional as Optional, Tuple, Callable
+from typing import Any, Optional as Optional, Tuple, Callable, List
 
 from flow_py_sdk.cadence.kind import Kind
 from flow_py_sdk.cadence.types import Value
@@ -37,7 +37,7 @@ class CadenceJsonEncoder(json.JSONEncoder):
         return super().default(o)
 
 
-def encode_arguments(arguments: list[Value]) -> list[bytes]:
+def encode_arguments(arguments: List[Value]) -> List[bytes]:
     if arguments is None:
         return []
     # the separators and the new line are there to get an identical json as the flow-go-sdk does (usually).
