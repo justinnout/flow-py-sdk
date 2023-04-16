@@ -5,7 +5,7 @@ from flow_py_sdk.exceptions import PySDKError
 from flow_py_sdk.templates import TransactionTemplates
 from flow_py_sdk.client import AccessAPI
 from flow_py_sdk.script import Script
-
+from typing import List
 
 @dataclass
 class CompositeSignature(object):
@@ -15,7 +15,7 @@ class CompositeSignature(object):
 
 
 async def verify_user_signature(
-    *, client: AccessAPI, message: bytes, composite_signatures: list[CompositeSignature]
+    *, client: AccessAPI, message: bytes, composite_signatures: List[CompositeSignature]
 ) -> bool:
     # if there is no signature return False
     if len(composite_signatures) == 0:
