@@ -4,11 +4,12 @@ import pathlib
 import sys
 
 from examples.common import Config, example_registry
+from typing import List
 
 log = logging.getLogger(__name__)
 
 
-async def run_async(ctx: Config, examples: list[str]) -> bool:
+async def run_async(ctx: Config, examples: List[str]) -> bool:
     if not examples:
         return await example_registry.run_all(ctx)
     else:
