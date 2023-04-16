@@ -1,11 +1,14 @@
 [tool.poetry]
-name = "flow-py-sdk"
+name = "flow-py-sdk-legacy"
 version = "0.0.0"
-description = "A python SKD for the flow blockchain"
-authors = ["Janez Podhostnik <janez.podhostnik@gmail.com>"]
+description = "A python SDK for the flow blockchain"
+authors = ["Janez Podhostnik <janez.podhostnik@gmail.com>", "justin.kc.herrera@gmail.com"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/janezpodhostnik/flow-py-sdk"
+repository = "https://github.com/justinnout/flow-py-sdk"
+packages = [
+    { include = "flow_py_sdk" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
