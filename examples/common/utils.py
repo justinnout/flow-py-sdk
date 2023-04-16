@@ -1,5 +1,3 @@
-from typing import Annotated
-
 import ecdsa
 
 from examples.common.config import Config
@@ -18,7 +16,7 @@ from flow_py_sdk import (
 
 def random_key_pair(
     sign_algo: SignAlgo,
-) -> (Annotated[bytes, "public key"], Annotated[bytes, "private key"]):
+) -> (bytes, bytes):
     sk = ecdsa.SigningKey.generate(curve=sign_algo.get_signing_curve())
     return sk.verifying_key.to_string(), sk.to_string()
 
@@ -27,7 +25,7 @@ async def random_account(
     *,
     client: AccessAPI,
     ctx: Config,
-    contracts: dict[Annotated[str, "name"], Annotated[str, "source"]] = None,
+    contracts: dict[str, str] = None,
 ) -> (cadence.Address, AccountKey, Signer):
     """
     Generate a random account.
@@ -60,7 +58,7 @@ async def random_account_with_weights(
     client: AccessAPI,
     ctx: Config,
     weights: list[int],
-    contracts: dict[Annotated[str, "name"], Annotated[str, "source"]] = None,
+    contracts: dict[str, str] = None,
 ) -> (cadence.Address, list[AccountKey], list[Signer]):
     """
     Generate a random account with a given set of weights.

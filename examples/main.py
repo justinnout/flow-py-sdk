@@ -2,14 +2,13 @@ import asyncio
 import logging
 import pathlib
 import sys
-from typing import Annotated
 
 from examples.common import Config, example_registry
 
 log = logging.getLogger(__name__)
 
 
-async def run_async(ctx: Config, examples: list[str]) -> Annotated[bool, "Success"]:
+async def run_async(ctx: Config, examples: list[str]) -> bool:
     if not examples:
         return await example_registry.run_all(ctx)
     else:
