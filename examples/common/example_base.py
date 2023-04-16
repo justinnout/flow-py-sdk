@@ -2,13 +2,14 @@ import logging
 from abc import abstractmethod, ABCMeta
 
 from examples.common.config import Config
+from typing import Dict
 
 log = logging.getLogger(__name__)
 
 
 class _ExampleRegistry(object):
     def __init__(self):
-        self._examples: dict[str, "Example"] = {}
+        self._examples: Dict[str, "Example"] = {}
 
     def register(self, ex: "Example"):
         """Register a new example

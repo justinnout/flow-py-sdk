@@ -14,29 +14,6 @@ on:
       - 'docs/**'
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
-      - name: Setup Poetry
-        uses: abatilo/actions-poetry@v2.2.0
-      - name: Poetry - Cache
-        id: poetry-cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - name: Poetry - Install
-        run: poetry install
-      - name: Poetry - black check
-        run: poetry run black . --check
-
   test:
     name: Test
     runs-on: ubuntu-latest

@@ -1,5 +1,6 @@
 import ecdsa
 
+from typing import Dict
 from examples.common.config import Config
 from flow_py_sdk import (
     cadence,
@@ -25,7 +26,7 @@ async def random_account(
     *,
     client: AccessAPI,
     ctx: Config,
-    contracts: dict[str, str] = None,
+    contracts: Dict[str, str] = None,
 ) -> (cadence.Address, AccountKey, Signer):
     """
     Generate a random account.
@@ -58,7 +59,7 @@ async def random_account_with_weights(
     client: AccessAPI,
     ctx: Config,
     weights: list[int],
-    contracts: dict[str, str] = None,
+    contracts: Dict[str, str] = None,
 ) -> (cadence.Address, list[AccountKey], list[Signer]):
     """
     Generate a random account with a given set of weights.
