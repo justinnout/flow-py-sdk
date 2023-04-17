@@ -14,7 +14,7 @@ from flow_py_sdk import cadence
 from flow_py_sdk.cadence import Value, cadence_object_hook, encode_arguments
 from flow_py_sdk.client import entities
 from flow_py_sdk.proto.flow.access import (
-    AccessApiStub,
+    AccessAPIStub,
     PingResponse,
 )
 from flow_py_sdk.script import Script
@@ -23,7 +23,7 @@ from flow_py_sdk.tx import Tx, TransactionStatus
 log = logging.getLogger(__name__)
 
 
-class AccessAPI(AccessApiStub):
+class AccessAPI(AccessAPIStub):
     def __init__(
         self,
         channel: "Channel",
