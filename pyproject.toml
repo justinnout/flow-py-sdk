@@ -16,7 +16,7 @@ betterproto = {extras = ["compiler"], version = "v2.0.0-beta6"}
 grpcio-tools = "^1.50.0"
 ecdsa = "^v0.16"
 rlp = "^3.1.0"
-grpclib = "^0.5"
+grpclib = "^0.4.1"
 
 [tool.poetry.dev-dependencies]
 coloredlogs = "^15.0"
