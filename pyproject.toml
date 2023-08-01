@@ -11,7 +11,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 betterproto = {extras = ["compiler"], version = "v2.0.0-beta6"}
 grpcio-tools = "^1.50.0"
 ecdsa = "^v0.16"
