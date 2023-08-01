@@ -12,11 +12,11 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-betterproto = {extras = ["compiler"], version = "v2.0.0-beta5"}
-grpcio-tools = "^1.49.1"
-ecdsa = "^v0.15"
-rlp = "^3.0.0"
-grpclib = "^0.4"
+betterproto = {extras = ["compiler"], version = "v2.0.0-beta6"}
+grpcio-tools = "^1.50.0"
+ecdsa = "^v0.16"
+rlp = "^3.1.1"
+grpclib = "^0.4.1"
 
 [tool.poetry.dev-dependencies]
 coloredlogs = "^15.0"

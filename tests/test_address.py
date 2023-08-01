@@ -21,3 +21,11 @@ class TestAddress(TestCase):
         with self.subTest(msg="Pass address as unknown"):
             with self.assertRaises(NotAddressError):
                 Address.convert_to_bytes(1)
+
+        with self.subTest(msg="Pass address as empty string"):
+            with self.assertRaises(NotAddressError):
+                Address.convert_to_bytes("")
+
+        with self.subTest(msg="Pass address as invalid hex string"):
+            with self.assertRaises(NotAddressError):
+                Address.convert_to_bytes("invalid")
